@@ -12,7 +12,7 @@
     </h1>
     <form action="file:///Users/sarahhermanns/Projects/TopPot/TopPotFrenzy/Practice_JS_HTML">
       <p>Which location are you headed to?</p>
-      <select name="Locations">
+      <select name="Locations" id="locations" onchange="dropDown">
         <option value="Downtown">DownTown</option>
         <option value="Capitol Hill">CapitolHill</option>
         <option value="South Lake Union">SlakeU</option>
@@ -21,9 +21,15 @@
       </select>
     </form> 
     <div id= "message"></div>
-    <script src= "js/basic-function.js"></script>
+    
 <script>
   // this function generates a random number between min and Max for any range chosen, found this at http://stackoverflow.com/questions/363681/generating-random-integers-in-a-range-with-java//
+
+  
+  function dropDown()
+  {
+    document.getElementById(location, savedVal)
+  }
 
   function trafficRandom (Min, Max) {
     return Min + Math.floor(Math.random() * ((Max - Min) +1))
@@ -33,23 +39,37 @@
     //All my variables///
     var hoursOpen   = 11;
     var currentHour = 0;
-    var salesPH     = [];
+    var savedVal     = [1000];
+    var saveHour = 0;
     //each output of donuts for each individual hour needs to be pushed into an array which is salesPH//
-    this.salesPH    = salesPH;
     this.location   = location;
     this.trafficMin = trafficMin;
     this.trafficMax = trafficMax;
     this.conversion = conversion;
     this.upt        = upt;
     //these all have a this. preceeding so that 
-    this.TotalDonutsPH = function(){
-      while (currentHour<hoursOpen){
-        this.salesPH.push(Math.round(trafficRandom(trafficMin, trafficMax) *conversion * upt)) 
-          currentHour++;
-          console.log(salesPH);
-      };
-      return salesPH;
+
     //this is the actual ouptut= donut sales for each hour the location is open//
+
+this.TotalDonutsPH = function()
+{
+  var currentVal, savedVal;
+  savedVal = 1000;
+  while (currentHour<hoursOpen)
+  {
+    currentVal = Math.round(trafficRandom(trafficMin, trafficMax) *conversion
+* upt)
+    if (savedVal > currentVal)
+    {
+      saveHour = currentHour;
+      savedVal = currentVal;
+    }
+    currentHour++;
+    return saveHour;
+};
+
+
+
     };
   };
 
