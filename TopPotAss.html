@@ -17,6 +17,10 @@
       </button>
     </form> 
    <div id= "loc1"></div><div id= "message1"></div>
+   <div id= "loc2"></div><div id= "message2"></div>
+   <div id= "loc3"></div><div id= "message3"></div>
+   <div id= "loc4"></div><div id= "message4"></div>
+   <div id= "loc5"></div><div id= "message5"></div>
     
 <script>
   // this function generates a random number between min and Max for any range chosen, found this at http://stackoverflow.com/questions/363681/generating-random-integers-in-a-range-with-java//
@@ -73,18 +77,36 @@
   var SlakeU      = new TopPotCafe ("SlakeU",      180, 250, .5,  6);
   var WedgeWood   = new TopPotCafe ("WedgeWood",   20,  60,  .20, 1.5);
   var Ballard     = new TopPotCafe ("Ballard",     25,  175, .33, 1);
-  //realized at the end of corrections that my conversions were actaully a percent so they needed to be put in decimal form!//
-  //Calling the TotalDonuts functions for each location.//
-  //DownTown.TotalDonutsPH();
-  //CapitolHill.TotalDonutsPH();
-  //SlakeU.TotalDonutsPH();
-  //WedgeWood.TotalDonutsPH();
-  //Ballard.TotalDonutsPH();
+;
 
-  var msg = DownTown.TotalDonutsPH();
+  var msg1 = DownTown.TotalDonutsPH();
   var loc1 = DownTown.location;
   document.getElementById('loc1').textContent = loc1;
-  document.getElementById('message1').textContent = msg;
+  document.getElementById('message1').textContent = msg1;
+
+
+  var msg2 = CapitolHill.TotalDonutsPH();
+  var loc2 = CapitolHill.location;
+  document.getElementById('loc2').textContent = loc2;
+  document.getElementById('message2').textContent = msg2;
+
+
+  var msg3 = SlakeU.TotalDonutsPH();
+  var loc3 = SlakeU.location;
+  document.getElementById('loc3').textContent = loc3;
+  document.getElementById('message3').textContent = msg3;
+
+
+  var msg4 = WedgeWood.TotalDonutsPH();
+  var loc4 = WedgeWood.location;
+  document.getElementById('loc4').textContent = loc4;
+  document.getElementById('message4').textContent = msg4;
+
+
+  var msg5 = Ballard.TotalDonutsPH();
+  var loc5 = Ballard.location;
+  document.getElementById('loc5').textContent = loc5;
+  document.getElementById('message5').textContent = msg5;
   
   
 
