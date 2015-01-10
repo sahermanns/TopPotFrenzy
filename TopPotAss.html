@@ -10,69 +10,62 @@
     <h1>
     <a href="http://www.toppotdoughnuts.com/cafe-info.html">Top Pot Donut Locations Seattle </a>
     </h1>
-    <form action="file:///Users/sarahhermanns/Projects/TopPot/TopPotFrenzy/Practice_JS_HTML">
-      <p>Which location are you headed to?</p>
-      <select name="Locations" id="locations" onchange="dropDown">
-        <option value="Downtown">DownTown</option>
-        <option value="Capitol Hill">CapitolHill</option>
-        <option value="South Lake Union">SlakeU</option>
-        <option value="Wedgewood">WedgeWood</option>
-        <option value="Ballard">Ballard</option>
-      </select>
+    <form>
+      <p>List of the least busy hour of the day</p>
+      <button name="besthours" id="besthours" onclick="displayBestHours()">
+        Best Hours
+      </button>
     </form> 
-    <div id= "message"></div>
+   <div id= "loc1"></div><div id= "message1"></div>
     
 <script>
   // this function generates a random number between min and Max for any range chosen, found this at http://stackoverflow.com/questions/363681/generating-random-integers-in-a-range-with-java//
 
-  
-  function dropDown()
+
+  function displayBestHours()
   {
-    document.getElementById(location, savedVal)
   }
 
-  function trafficRandom (Min, Max) {
+  function trafficRandom (Min, Max) 
+    {
     return Min + Math.floor(Math.random() * ((Max - Min) +1))
-  };
+    };
 
   function TopPotCafe (location, trafficMin, trafficMax, conversion, upt) {
     //All my variables///
     var hoursOpen   = 11;
     var currentHour = 0;
-    var savedVal     = [1000];
-    var saveHour = 0;
+    var savedVal    = 1000;
+    var saveHour    = 0;
     //each output of donuts for each individual hour needs to be pushed into an array which is salesPH//
     this.location   = location;
     this.trafficMin = trafficMin;
     this.trafficMax = trafficMax;
     this.conversion = conversion;
     this.upt        = upt;
+    this.savedVal   = savedVal;
+    this.saveHour   = saveHour;
     //these all have a this. preceeding so that 
 
     //this is the actual ouptut= donut sales for each hour the location is open//
 
-this.TotalDonutsPH = function()
-{
-  var currentVal, savedVal;
-  savedVal = 1000;
-  while (currentHour<hoursOpen)
-  {
-    currentVal = Math.round(trafficRandom(trafficMin, trafficMax) *conversion
-* upt)
-    if (savedVal > currentVal)
-    {
-      saveHour = currentHour;
-      savedVal = currentVal;
-    }
-    currentHour++;
-    return saveHour;
-};
+      this.TotalDonutsPH = function()
+        {
+        var currentVal;
+          while (currentHour<hoursOpen)
+            {
+              currentVal = Math.round(trafficRandom(trafficMin, trafficMax) *conversion* upt);
+          if (savedVal > currentVal)
+            {
+              saveHour = currentHour;
+              savedVal = currentVal;
+            };
+              currentHour++;
+            };
+          return saveHour;
+        };
 
-
-
-    };
-  };
-
+      };
     
   //this names each location as an instance///
   var DownTown    = new TopPotCafe ("DownTown",    80,  220, .10, 4);
@@ -89,13 +82,13 @@ this.TotalDonutsPH = function()
   //Ballard.TotalDonutsPH();
 
   var msg = DownTown.TotalDonutsPH();
-    function updateMessage() {
-        var el = document.getElementById('message');
-        el.textContent = msg;
-    };
-      updateMessage();
-      
+  var loc1 = DownTown.location;
+  document.getElementById('loc1').textContent = loc1;
+  document.getElementById('message1').textContent = msg;
   
+  
+
+
 </script>
 </body>
 </html>
