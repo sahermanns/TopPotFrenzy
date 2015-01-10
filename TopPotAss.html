@@ -7,14 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/{{JQUERY_VERSION}}/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
     <h1>
     <a href="http://www.toppotdoughnuts.com/cafe-info.html">Top Pot Donut Locations Seattle </a>
     </h1>
@@ -28,13 +20,16 @@
         <option value="Ballard">Ballard</option>
       </select>
     </form> 
+    <div id= "message"></div>
+    <script src= "js/basic-function.js"></script>
 <script>
   // this function generates a random number between min and Max for any range chosen, found this at http://stackoverflow.com/questions/363681/generating-random-integers-in-a-range-with-java//
+
   function trafficRandom (Min, Max) {
     return Min + Math.floor(Math.random() * ((Max - Min) +1))
   };
 
-  function DonutsPH (location, trafficMin, trafficMax, conversion, upt) {
+  function TopPotCafe (location, trafficMin, trafficMax, conversion, upt) {
     //All my variables///
     var hoursOpen   = 11;
     var currentHour = 0;
@@ -53,23 +48,33 @@
           currentHour++;
           console.log(salesPH);
       };
+      return salesPH;
     //this is the actual ouptut= donut sales for each hour the location is open//
-    }
-  }
+    };
+  };
+
     
   //this names each location as an instance///
-  var DownTown    = new DonutsPH ("DownTown",    80,  220, .10, 4);
-  var CapitolHill = new DonutsPH ("CapitolHill", 5,   45,  .45, 2);
-  var SlakeU      = new DonutsPH ("SlakeU",      180, 250, .5,  6);
-  var WedgeWood   = new DonutsPH ("WedgeWood",   20,  60,  .20, 1.5);
-  var Ballard     = new DonutsPH ("Ballard",     25,  175, .33, 1);
+  var DownTown    = new TopPotCafe ("DownTown",    80,  220, .10, 4);
+  var CapitolHill = new TopPotCafe ("CapitolHill", 5,   45,  .45, 2);
+  var SlakeU      = new TopPotCafe ("SlakeU",      180, 250, .5,  6);
+  var WedgeWood   = new TopPotCafe ("WedgeWood",   20,  60,  .20, 1.5);
+  var Ballard     = new TopPotCafe ("Ballard",     25,  175, .33, 1);
   //realized at the end of corrections that my conversions were actaully a percent so they needed to be put in decimal form!//
   //Calling the TotalDonuts functions for each location.//
-  DownTown.TotalDonutsPH();
-  CapitolHill.TotalDonutsPH();
-  SlakeU.TotalDonutsPH();
-  WedgeWood.TotalDonutsPH();
-  Ballard.TotalDonutsPH();
+  //DownTown.TotalDonutsPH();
+  //CapitolHill.TotalDonutsPH();
+  //SlakeU.TotalDonutsPH();
+  //WedgeWood.TotalDonutsPH();
+  //Ballard.TotalDonutsPH();
+
+  var msg = DownTown.TotalDonutsPH();
+    function updateMessage() {
+        var el = document.getElementById('message');
+        el.textContent = msg;
+    };
+      updateMessage();
+      
   
 </script>
 </body>
