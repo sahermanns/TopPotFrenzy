@@ -12,7 +12,7 @@
     </h1>
     <form>
       <p>Hours after open when bussiness is slowest</p>
-      <button name="besthours" id="besthours" onclick="displayBestHours()">
+      <button name="besthours" id="besthours">
         Best Hours
       </button>
     </form> 
@@ -26,14 +26,9 @@
   // this function generates a random number between min and Max for any range chosen, found this at http://stackoverflow.com/questions/363681/generating-random-integers-in-a-range-with-java//
 
 
-  function displayBestHours()
-  {
-  }
-
-  function trafficRandom (Min, Max) 
-    {
+  function trafficRandom (Min, Max) {
     return Min + Math.floor(Math.random() * ((Max - Min) +1))
-    };
+  };
 
   function TopPotCafe (location, trafficMin, trafficMax, conversion, upt) {
     //All my variables///
@@ -53,62 +48,60 @@
 
     //this is the actual ouptut= donut sales for each hour the location is open//
 
-      this.TotalDonutsPH = function()
-        {
+      this.TotalDonutsPH = function() {
         var currentVal;
-          while (currentHour<hoursOpen)
-            {
+          while (currentHour<hoursOpen) {
               currentVal = Math.round(trafficRandom(trafficMin, trafficMax) *conversion* upt);
-          if (savedVal > currentVal)
-            {
-              saveHour = currentHour;
-              savedVal = currentVal;
+            if (savedVal > currentVal) {
+                saveHour = currentHour;
+                savedVal = currentVal;
             };
-              currentHour++;
-            };
+            currentHour++;
+          };
           return saveHour;
-        };
-
       };
-    
-  //this names each location as an instance///
-  var DownTown    = new TopPotCafe ("DownTown",    80,  220, .10, 4);
-  var CapitolHill = new TopPotCafe ("CapitolHill", 5,   45,  .45, 2);
-  var SlakeU      = new TopPotCafe ("SlakeU",      180, 250, .5,  6);
-  var WedgeWood   = new TopPotCafe ("WedgeWood",   20,  60,  .20, 1.5);
-  var Ballard     = new TopPotCafe ("Ballard",     25,  175, .33, 1);
-;
 
-  var msg1 = DownTown.TotalDonutsPH();
-  var loc1 = DownTown.location;
-  document.getElementById('loc1').textContent = loc1;
-  document.getElementById('message1').textContent = msg1;
+    };
 
 
-  var msg2 = CapitolHill.TotalDonutsPH();
-  var loc2 = CapitolHill.location;
-  document.getElementById('loc2').textContent = loc2;
-  document.getElementById('message2').textContent = msg2;
-
-
-  var msg3 = SlakeU.TotalDonutsPH();
-  var loc3 = SlakeU.location;
-  document.getElementById('loc3').textContent = loc3;
-  document.getElementById('message3').textContent = msg3;
-
-
-  var msg4 = WedgeWood.TotalDonutsPH();
-  var loc4 = WedgeWood.location;
-  document.getElementById('loc4').textContent = loc4;
-  document.getElementById('message4').textContent = msg4;
-
-
-  var msg5 = Ballard.TotalDonutsPH();
-  var loc5 = Ballard.location;
-  document.getElementById('loc5').textContent = loc5;
-  document.getElementById('message5').textContent = msg5;
+  function displayBestHours() {
   
-  
+    //this names each location as an instance///
+    var DownTown    = new TopPotCafe ("DownTown",    80,  220, .10, 4);
+    var CapitolHill = new TopPotCafe ("CapitolHill", 5,   45,  .45, 2);
+    var SlakeU      = new TopPotCafe ("SlakeU",      180, 250, .5,  6);
+    var WedgeWood   = new TopPotCafe ("WedgeWood",   20,  60,  .20, 1.5);
+    var Ballard     = new TopPotCafe ("Ballard",     25,  175, .33, 1);
+
+    var msg1 = DownTown.TotalDonutsPH();
+    var loc1 = DownTown.location;
+    document.getElementById('loc1').textContent = loc1;
+    document.getElementById('message1').textContent = msg1;
+
+    var msg2 = CapitolHill.TotalDonutsPH();
+    var loc2 = CapitolHill.location;
+    document.getElementById('loc2').textContent = loc2;
+    document.getElementById('message2').textContent = msg2;
+
+    var msg3 = SlakeU.TotalDonutsPH();
+    var loc3 = SlakeU.location;
+    document.getElementById('loc3').textContent = loc3;
+    document.getElementById('message3').textContent = msg3;
+
+    var msg4 = WedgeWood.TotalDonutsPH();
+    var loc4 = WedgeWood.location;
+    document.getElementById('loc4').textContent = loc4;
+    document.getElementById('message4').textContent = msg4;
+
+    var msg5 = Ballard.TotalDonutsPH();
+    var loc5 = Ballard.location;
+    document.getElementById('loc5').textContent = loc5;
+    document.getElementById('message5').textContent = msg5;
+  };
+
+  var bestHour = document.getElementById("besthours");
+  bestHour.addEventListener("click", displayBestHours, false);
+
 
 
 </script>
